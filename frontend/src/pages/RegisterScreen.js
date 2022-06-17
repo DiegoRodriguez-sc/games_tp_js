@@ -1,10 +1,9 @@
 import React from 'react';
+import Register from '../components/auth/Register';
 
 const RegisterScreen = () => {
     return ( 
-        <div>
-            Register
-        </div>
+        <Register />
      );
 }
  
