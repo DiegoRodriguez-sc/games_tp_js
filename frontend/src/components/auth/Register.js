@@ -11,6 +11,10 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
+//backgroun color E2E2E2
+//color 050038
+//card CCCCCC
+
 //form validation
 const validationSchema = yup.object({
   name: yup
@@ -55,7 +59,8 @@ const Register = () => {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage:
+            "url(https://raw.githubusercontent.com/DiegoRodriguez-sc/todo_app-frontend/master/src/assets/reversi.png)",
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
@@ -65,7 +70,16 @@ const Register = () => {
           backgroundPosition: "center",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        sx={{ background: "#E2E2E2", color: "#050038" }}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Box
           sx={{
             my: 8,
@@ -89,7 +103,7 @@ const Register = () => {
             sx={{ mt: 1 }}
           >
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="name"
               name="name"
@@ -101,7 +115,7 @@ const Register = () => {
             />
             <Box margin={3} />
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="email"
               name="email"
@@ -113,7 +127,7 @@ const Register = () => {
             />
             <Box margin={3} />
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="password"
               name="password"
@@ -126,7 +140,7 @@ const Register = () => {
             />
             <Box margin={3} />
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="password2"
               name="password2"
@@ -144,7 +158,15 @@ const Register = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                background: "#050038",
+                color: "#E2E2E2",
+                "&:hover": {
+                  background: "#050040",
+                },
+              }}
             >
               Ingresar
             </Button>
@@ -155,7 +177,7 @@ const Register = () => {
                 fontSize: "15px",
                 textTransform: "capitalize",
                 "&:hover": {
-                  backgroundColor: "registerButton",
+                  color: "#050038",
                 },
               }}
               type="button"

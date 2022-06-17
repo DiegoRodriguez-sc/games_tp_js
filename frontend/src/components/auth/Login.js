@@ -1,5 +1,6 @@
 import React from "react";
 //react router
+import { useNavigate } from "react-router-dom";
 //styles material UI
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -24,6 +25,8 @@ const validationSchema = yup.object({
 });
 
 const Login = () => {
+  let navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -44,17 +47,24 @@ const Login = () => {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage:
+            "url(https://raw.githubusercontent.com/DiegoRodriguez-sc/todo_app-frontend/master/src/assets/batleship.png)",
           backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
+          backgroundColor: "#E2E2E2",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        sx={{ background: "#E2E2E2", color: "#050038" }}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Box
           sx={{
             my: 8,
@@ -78,7 +88,7 @@ const Login = () => {
             sx={{ mt: 1 }}
           >
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="email"
               name="email"
@@ -90,7 +100,7 @@ const Login = () => {
             />
             <Box margin={3} />
             <TextField
-              sx={{ color: "#9096B2" }}
+              sx={{ color: "#050038" }}
               fullWidth
               id="password"
               name="password"
@@ -106,18 +116,27 @@ const Login = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                background: "#050038",
+                color: "#E2E2E2",
+                "&:hover": {
+                  background: "#050040",
+                },
+              }}
             >
               Ingresar
             </Button>
             <Button
               fullWidth
+              onClick={() => navigate("/register")}
               sx={{
                 color: "#9096B2",
                 fontSize: "15px",
                 textTransform: "capitalize",
                 "&:hover": {
-                  backgroundColor: "registerButton",
+                  color: "#050038",
                 },
               }}
               type="button"
