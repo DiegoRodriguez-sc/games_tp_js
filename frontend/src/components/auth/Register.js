@@ -1,15 +1,15 @@
 import React from "react";
 //react router
+import { useNavigate } from "react-router-dom";
 //styles material UI
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Avatar, CssBaseline, Grid, Paper } from "@mui/material";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import { CssBaseline, Grid, Paper } from "@mui/material";
 //formik
 import { useFormik } from "formik";
 import * as yup from "yup";
+
 
 //backgroun color E2E2E2
 //color 050038
@@ -37,6 +37,9 @@ const validationSchema = yup.object({
 });
 
 const Register = () => {
+
+  let navigate = useNavigate();  
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -89,13 +92,13 @@ const Register = () => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <SportsEsportsIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Registrate a Game-Team-05
-          </Typography>
-          <Box margin={3} />
+          <Box sx={{ width: "100%", marginBottom: "-2rem" }}>
+            <img
+              src="https://res.cloudinary.com/dgxoj05dn/image/upload/v1655510983/registro_gsgw1j.svg"
+              style={{ width: "100%" }}
+              alt="logo login"
+            />
+          </Box>
           <Box
             component="form"
             onSubmit={formik.handleSubmit}
@@ -172,6 +175,7 @@ const Register = () => {
             </Button>
             <Button
               fullWidth
+              onClick={()=>navigate("/login")}
               sx={{
                 color: "#9096B2",
                 fontSize: "15px",

@@ -4,10 +4,8 @@ import { useNavigate } from "react-router-dom";
 //styles material UI
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Avatar, CssBaseline, Grid, Paper } from "@mui/material";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import { CssBaseline, Grid, Paper } from "@mui/material";
 //formik
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -74,13 +72,13 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <SportsEsportsIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Ingresa a Game-Team-05
-          </Typography>
-          <Box margin={3} />
+          <Box sx={{ width: "100%", marginBottom: "-2rem" }}>
+            <img
+              src="https://res.cloudinary.com/dgxoj05dn/image/upload/v1655510562/login_opaevi.svg"
+              style={{ width: "100%" }}
+              alt="logo login"
+            />
+          </Box>
           <Box
             component="form"
             onSubmit={formik.handleSubmit}
