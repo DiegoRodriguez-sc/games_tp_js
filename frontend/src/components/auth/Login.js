@@ -1,4 +1,5 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 //react router
 import { useNavigate } from "react-router-dom";
 //styles material UI
@@ -9,6 +10,7 @@ import { CssBaseline, Grid, Paper } from "@mui/material";
 //formik
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { startLogin } from "../../redux/reducers/authReducer";
 
 //form validation
 const validationSchema = yup.object({
@@ -24,6 +26,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -33,6 +36,7 @@ const Login = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(startLogin(values));
     },
   });
 
@@ -91,6 +95,7 @@ const Login = () => {
               id="email"
               name="email"
               label="Email"
+              autoComplete="off"
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && Boolean(formik.errors.email)}

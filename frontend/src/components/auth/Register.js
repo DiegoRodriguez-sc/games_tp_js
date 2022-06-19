@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 //react router
 import { useNavigate } from "react-router-dom";
 //styles material UI
@@ -9,6 +10,8 @@ import { CssBaseline, Grid, Paper } from "@mui/material";
 //formik
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { startRegister } from "../../redux/reducers/authReducer";
+
 
 
 //backgroun color E2E2E2
@@ -39,6 +42,7 @@ const validationSchema = yup.object({
 const Register = () => {
 
   let navigate = useNavigate();  
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -50,6 +54,7 @@ const Register = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       console.log(values);
+      dispatch(startRegister(values));
     },
   });
 
@@ -111,6 +116,7 @@ const Register = () => {
               id="name"
               name="name"
               label="Nombre"
+              autoComplete="off"
               value={formik.values.name}
               onChange={formik.handleChange}
               error={formik.touched.name && Boolean(formik.errors.name)}
@@ -122,6 +128,7 @@ const Register = () => {
               fullWidth
               id="email"
               name="email"
+              autoComplete="off"
               label="Email"
               value={formik.values.email}
               onChange={formik.handleChange}
