@@ -5,7 +5,13 @@ import {
   serviceRevalidation,
 } from "../../services/auth.service";
 
-//functions async
+let snack = "";
+let navigates;
+
+export const notistack = (notify, navigate) => {
+  snack = notify;
+  navigates = navigate;
+};
 
 export const startLogin = createAsyncThunk("auth/startLogin", async (body) => {
   const respLogin = await serviceLogin(body);
@@ -49,6 +55,10 @@ const authSlice = createSlice({
       console.log(action.payload);
       if (action.payload.error) {
         state.error = action.payload.error.msg;
+        const message = action.payload.error.msg;
+        snack(message, {
+          variant: "error",
+        });
         state.logged = false;
       } else {
         state.token = action.payload.resp.data.token;
@@ -56,6 +66,10 @@ const authSlice = createSlice({
         state.logged = true;
         state.error = null;
         localStorage.setItem("token", action.payload.resp.data.token);
+        const message = `Bienvenido ${action.payload.resp.data.user.name}`;
+        snack(message, {
+          variant: "success",
+        });
       }
       state.loading = false;
     },
@@ -69,7 +83,17 @@ const authSlice = createSlice({
       state.loading = true;
     },
     [startRegister.fulfilled]: (state, action) => {
-        console.log(action.payload.resp);
+      console.log(action.payload.resp);
+      const message = action.payload.resp.msg;
+      snack(message, {
+        variant: "success",
+      });
+
+      navigates("/login");
+      const message2 = "Inicia sesion con tu nueva cuenta!!";
+      snack(message2, {
+        variant: "info",
+      });
     },
     [startRegister.rejected]: (state, action) => {
       state.error = "error al Registrarse trata de recargar la página ";
