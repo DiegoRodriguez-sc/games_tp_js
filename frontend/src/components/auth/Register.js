@@ -10,7 +10,7 @@ import { CssBaseline, Grid, Paper } from "@mui/material";
 //formik
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { startRegister } from "../../redux/reducers/authReducer";
+import { navig, startRegister } from "../../redux/reducers/authReducer";
 
 
 
@@ -43,6 +43,7 @@ const Register = () => {
 
   let navigate = useNavigate();  
   const dispatch = useDispatch();
+  navig(navigate);
 
   const formik = useFormik({
     initialValues: {
